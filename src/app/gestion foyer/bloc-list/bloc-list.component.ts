@@ -1,7 +1,7 @@
 // bloc-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { BlocService } from '../Service/bloc.service';
-import {Bloc} from "../model/Bloc";
+import { BlocService } from '../../services/bloc.service';
+import {Bloc} from "../../models/Bloc";
 
 
 @Component({

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {FoyerService} from "../Service/foyer.service";
+import {FoyerService} from "../../services/foyer.service";
 
 @Component({
   selector: 'app-foyer-delete',

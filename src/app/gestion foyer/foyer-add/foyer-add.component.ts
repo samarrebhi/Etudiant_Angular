@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FoyerService} from "../Service/foyer.service";
-import {Foyer} from "../model/Foyer";
-import {BlocService} from "../Service/bloc.service";
-import {UniversiteService} from "../Service/universite.service";
-import {Universite} from "../model/Universite";
-import {Bloc} from "../model/Bloc";
+import {FoyerService} from "../../services/foyer.service";
+import {Foyer} from "../../models/Foyer";
+import {BlocService} from "../../services/bloc.service";
+import {UniversiteService} from "../../services/universite.service";
+import {Universite} from "../../models/Universite";
+import {Bloc} from "../../models/Bloc";
 import {Router} from "@angular/router";
 
 @Component({

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Bloc} from "../model/Bloc";
-import {BlocService} from "../Service/bloc.service";
-import {Foyer} from "../model/Foyer";
-import {FoyerService} from "../Service/foyer.service";
+import {Bloc} from "../../models/Bloc";
+import {BlocService} from "../../services/bloc.service";
+import {Foyer} from "../../models/Foyer";
+import {FoyerService} from "../../services/foyer.service";
 
 @Component({
   selector: 'app-foyer-list',

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {catchError, Observable, of, tap} from 'rxjs';
-import {Bloc} from "../model/Bloc";
+import {Bloc} from "../models/Bloc";
 
 @Injectable({
   providedIn: 'root',

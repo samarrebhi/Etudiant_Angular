@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Bloc} from "../model/Bloc";
-import {Foyer} from "../model/Foyer";
+import {Bloc} from "../models/Bloc";
+import {Foyer} from "../models/Foyer";
 import {ɵElement, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
 @Injectable({
