@@ -8,19 +8,23 @@ import { Etudiant } from 'src/app/models/etudiant';
   styleUrls: ['./add-etudiant.component.scss']
 })
 export class AddEtudiantComponent {
-  constructor(private EtudiantService: EtudiantService) {}
-
+  
   Etudiant=new Etudiant()
-  showForm(f:any){
-  console.log(f)
-}
 
-// testing
+
+  constructor(private EtudiantService: EtudiantService)
+   {}
+  
+  showForm(f:any){
+    console.log(f);}
+  
+
+// tester les inputs 
 show(u:Etudiant){
   console.log('Form value:', u);
 
 }
-// ajouter
+// ajouter l'étudiant
 saveEtudiant(u:Etudiant){
 this.EtudiantService.addEtudiant(u).subscribe(
   (response) => {

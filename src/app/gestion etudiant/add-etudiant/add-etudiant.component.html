@@ -1,4 +1,3 @@
-<p>add-etudiant works!</p>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/flex-layout@12.0.0/bundles/flex-layout.umd.min.js">
 
 <mat-card class="cardWithShadow">
@@ -16,27 +15,50 @@
 
         <mat-form-field appearance="outline" class="w-100">
           <label>Nom:</label>
-          <input  matInput type="text" placeholder="Nom" name="nomEt"  [(ngModel)]="Etudiant.nomEt" #nomEtEtudiant="ngModel">         
+          <input
+            matInput
+            type="text"
+            placeholder="Nom"
+            name="nomEt"
+            [(ngModel)]="Etudiant.nomEt"
+            required
+            minlength="5"
+            #nomEtEtudiant="ngModel"
+          />
+          <mat-error *ngIf="nomEtEtudiant.invalid && nomEtEtudiant.touched">
+            <span *ngIf="nomEtEtudiant.errors?.['required']">Required</span>
+            <span *ngIf="nomEtEtudiant.errors?.['minlength']">Minimum length is 5 characters</span>
+          </mat-error>
         </mat-form-field>
+        
+      
 
         <mat-form-field appearance="outline" class="w-100">
           <label>Prénom</label>
-          <input matInput type="text" placeholder="Prénom"  name="prenomEt" [(ngModel)]="Etudiant.prenomEt" #prenomEttudiant="ngModel">
+          <input matInput type="text" placeholder="Prénom"  name="prenomEt" [(ngModel)]="Etudiant.prenomEt" #prenomEttudiant="ngModel" required minlength="6">
+          <mat-error *ngIf="form.controls['prenomEt'].invalid && form.controls['prenomEt'].touched" class="red-text">
+            <span *ngIf="form.controls['prenomEt'].hasError('required')">Required</span>
+            <span *ngIf="form.controls['prenomEt'].hasError('minlength')">Minimum length is 6 characters</span>
+          </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline" class="w-80">
+            <label id="email">Email:</label>
+            <input matInput type="email" placeholder="Adresse Email" name="email" [(ngModel)]="Etudiant.email" #emailEtudiant="ngModel" required>
+            <mat-error *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="red-text">
+              <span *ngIf="form.controls['email'].hasError('required')">Email Adress Required</span>
+              <span *ngIf="form.controls['email'].errors?.['email']">Invalid email format.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
             <label id="ecole">Ecole:</label>
             <input type="text" placeholder="Ecole" [(ngModel)]="Etudiant.ecole"name="ecole" #ecoleEtudiant="ngModel" >
         </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-80">
-            <label id="email">Email:</label>
-            <input matInput type="email" placeholder="Adresse Email" name="email" [(ngModel)]="Etudiant.email" #emailEtudiant="ngModel">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="w-80">
             <label id="mdp">Mot De passe:</label>
-           <input  matInput type="mdp" placeholder="Mot de passe" [(ngModel)]="Etudiant.mdp" required name="mdp" #mdpEtudiant="ngModel">
+           <input  matInput type="password" placeholder="Mot de passe" [(ngModel)]="Etudiant.mdp" required name="mdp" #mdpEtudiant="ngModel">
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-80">
@@ -46,12 +68,13 @@
 
           <mat-form-field appearance="outline" class="w-80">
             <label id="cin">CIN:</label>
-            <input matInput type="text" placeholder="CIN" [(ngModel)]="Etudiant.cin" name="cin" #cinEtudiant="ngModel"> 
+            <input matInput type="text" placeholder="CIN" [(ngModel)]="Etudiant.cin" name="cin" #cinEtudiant="ngModel" required> 
+            <mat-error *ngIf="form.controls['cin'].hasError('required')">Cin Required</mat-error>
           </mat-form-field>
-        
-        <button mat-flat-button color="accent" class="w-100" type="submit"(click)="saveEtudiant(form.value)" (click)="show(form.value)">Ajouter</button>
+        <button mat-flat-button color="accent" class="w-100" type="submit"(click)="saveEtudiant(form.value)" (click)="show(form.value)">
+          Ajouter</button>
 
-    </div>
+      </div>
 </mat-card-content>
 </mat-card>
 </form>

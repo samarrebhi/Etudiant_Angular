@@ -26,7 +26,6 @@
             <thead>
             <tr>
               <!-- Titles -->
-              <th class="table-header">Id Etudiant</th>
               <th class="table-header">Nom Etudiant</th>
               <th class="table-header">Prenom Etudiant</th>
               <th class="table-header">Cin</th>
@@ -42,7 +41,7 @@
               <!-- Filter based on search -->
               <ng-container *ngIf="Etudiant.nomEt === search || search === ''">
                 <!-- Etudiant Details -->
-                <td class="table-cell">{{ Etudiant.idEtudiant}}</td>
+               
                 <td class="table-cell">{{ Etudiant.nomEt }}</td>
                 <td class="table-cell">{{ Etudiant.prenomEt }}</td>
                 <td class="table-cell">{{ Etudiant.cin }}</td>

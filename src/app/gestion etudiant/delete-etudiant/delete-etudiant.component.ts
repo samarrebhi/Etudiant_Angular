@@ -1,7 +1,5 @@
-import { Component,OnInit } from '@angular/core';
-import { Etudiant } from 'src/app/models/etudiant';
+import { Component} from '@angular/core';
 import { EtudiantService } from 'src/app/services/etudiant.service';
-  import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-delete-etudiant',
   templateUrl: './delete-etudiant.component.html',
@@ -12,15 +10,18 @@ export class DeleteEtudiantComponent {
    ){}
 
    Etudiant: any;
-  idInput:string='';
+  cinInput:string='';
+  etudiantId: number; // Property to store the id
 
   supprimer() {
-    const id = Number(this.idInput);
+    const cin = Number(this.cinInput);
   
-    this.service.getEtudiantById(id).subscribe(
+    this.service.getEtudiantByCin(cin).subscribe(
       (result) => {
         this.Etudiant = result;
-          this.service.removeEtudiant(id).subscribe(
+          // Store the id in the class property
+      this.etudiantId = this.Etudiant.idEtudiant;
+          this.service.removeEtudiant(this.etudiantId).subscribe(
             () => {
               alert('Etudiant bien supprimé');
             },

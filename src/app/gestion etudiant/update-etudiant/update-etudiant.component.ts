@@ -13,28 +13,33 @@ export class UpdateEtudiantComponent {
    ){}
      
     Etudiant: any;
-    idInput:string='';
+    cinInput:string='';
+    etudiantId: number; // Property to store the id
 
    
     trouver(){
-    const id = Number(this.idInput);
+    const cin = Number(this.cinInput);
       
-      // Fetch data by id from the service
-      this.service.getEtudiantById(id).subscribe((result) => {
+      // Fetch data by cin from the service
+      this.service.getEtudiantByCin(cin).subscribe((result) => {
         this.Etudiant = result;
         console.log(result);
+       
+         // Store the id in the class property
+      this.etudiantId = this.Etudiant.idEtudiant;
       });
     }
+    
    // test form values yetkraw wale before updating 
   show(u:Etudiant){
     console.log('Form value:', u);
-  
+
   }
     onSubmit(u:Etudiant){
-      const id = Number(this.idInput);
+      const id= Number(this.etudiantId);
             this.service.updateEtudiant(u,id).subscribe();
            
-            alert('Etudiant '+id+' bien modifié')
+            alert('Etudiant '+this.cinInput+' bien modifié')
    
   }
 }

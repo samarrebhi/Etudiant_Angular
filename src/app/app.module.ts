@@ -17,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Import Layouts
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
-
 // Vertical Layout
 import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
@@ -49,7 +48,7 @@ import { UpdateEtudiantComponent } from './gestion etudiant/update-etudiant/upda
     AllEtudiantComponent,
     AddEtudiantComponent,
     DeleteEtudiantComponent,
-    UpdateEtudiantComponent 
+    UpdateEtudiantComponent
 
   ],
   imports: [
@@ -60,6 +59,7 @@ import { UpdateEtudiantComponent } from './gestion etudiant/update-etudiant/upda
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+   
     TablerIconsModule.pick(TablerIcons),
   ],
   exports: [TablerIconsModule],

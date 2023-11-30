@@ -19,8 +19,8 @@ export class EtudiantService {
   }
 
 
-  getEtudiantById(id:number):Observable<any>{
-    const url = `${this. Url}getbyid/${id}`;
+  getEtudiantByCin(cin:number):Observable<any>{
+    const url = `${this. Url}getbycin/${cin}`;
     return this.http.get(url);
       }
       
