@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FoyerUpdateComponent } from './foyer-update.component';
+import { QRcodeEtudiantComponent } from './qrcode-etudiant.component';
 
-describe('FoyerUpdateComponent', () => {
-  let component: FoyerUpdateComponent;
-  let fixture: ComponentFixture<FoyerUpdateComponent>;
+describe('QRcodeEtudiantComponent', () => {
+  let component: QRcodeEtudiantComponent;
+  let fixture: ComponentFixture<QRcodeEtudiantComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoyerUpdateComponent ]
+      declarations: [ QRcodeEtudiantComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FoyerUpdateComponent);
+    fixture = TestBed.createComponent(QRcodeEtudiantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

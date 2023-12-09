@@ -1,80 +1,137 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/flex-layout@12.0.0/bundles/flex-layout.umd.min.js">
-
 <mat-card class="cardWithShadow">
   <mat-card-content class="p-24">
-    <div fxLayout="column" fxLayoutAlign="center center">
-      Ajouter un nouveau Etudiant
-    </div>
+    <h2 fxLayout="column" fxLayoutAlign="center center">
+      Ajouter un nouveau Étudiant
+    </h2>
   </mat-card-content>
 </mat-card>
-
-<form #form="ngForm">
+<button mat-flat-button color="accent" class="w-10"routerLink="/etudiant">
+  Retour
+</button>
+<form #form="ngForm" class="m-t-30">
   <mat-card class="cardWithShadow">
     <mat-card-content class="p-24">
       <div fxLayout="column" fxLayoutAlign="center center">
 
         <mat-form-field appearance="outline" class="w-100">
-          <label>Nom:</label>
+          <mat-label>Nom:</mat-label>
           <input
             matInput
             type="text"
-            placeholder="Nom"
+            placeholder="Foulen"
             name="nomEt"
             [(ngModel)]="Etudiant.nomEt"
             required
             minlength="5"
             #nomEtEtudiant="ngModel"
           />
-          <mat-error *ngIf="nomEtEtudiant.invalid && nomEtEtudiant.touched">
-            <span *ngIf="nomEtEtudiant.errors?.['required']">Required</span>
-            <span *ngIf="nomEtEtudiant.errors?.['minlength']">Minimum length is 5 characters</span>
+          <mat-error *ngIf="nomEtEtudiant.invalid && nomEtEtudiant.touched">Required (Minimum length is 5 characters)</mat-error>
+        </mat-form-field>
+        
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Prénom:</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="BenFoulen"
+            name="prenomEt"
+            [(ngModel)]="Etudiant.prenomEt"
+            required
+            minlength="6"
+            #prenomEtEtudiant="ngModel"
+          />
+          <mat-error *ngIf="prenomEtEtudiant.invalid && prenomEtEtudiant.touched">Required (Minimum length is 6 characters)</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-80">
+          <mat-label>Email:</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Exemple@gmail.com"
+            name="emailEtudiant"
+            [(ngModel)]="Etudiant.email"
+            #emailEtudiant="ngModel"
+            email
+            required
+          />
+          <mat-error *ngIf="emailEtudiant.invalid && emailEtudiant.touched">
+            <ng-container *ngIf="emailEtudiant.errors?.['required']">Email is required</ng-container>
+            <ng-container *ngIf="emailEtudiant.errors?.['email']">Invalid email format</ng-container>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Ecole:</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Ecole sup de Tunis"
+            [(ngModel)]="Etudiant.ecole"
+            name="ecole"
+            #ecoleEtudiant="ngModel"
+            required
+          />
+          <mat-error *ngIf="ecoleEtudiant.invalid && ecoleEtudiant.touched">
+            Ecole is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-90">
+          <mat-label>Mot de passe:</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Mot de passe"
+            [(ngModel)]="Etudiant.mdp"
+            maxlength="10"
+            name="mdpEtudiant"
+            #mdpEtudiant="ngModel"
+            required
+          />
+          <mat-hint align="end">{{ mdpEtudiant.value?.length || 0 }}/10</mat-hint>
+          <mat-error *ngIf="mdpEtudiant.invalid && mdpEtudiant.touched">
+            Mot de passe is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Date de naissance:</mat-label>
+          <input
+            matInput
+            type="date"
+            placeholder="YYYY-MM-DD"
+            name="date_naissance"
+            [(ngModel)]="Etudiant.date_naissance"
+            #date_naissanceEtudiant="ngModel"
+            required
+          />
+          <mat-error *ngIf="date_naissanceEtudiant.invalid && date_naissanceEtudiant.touched">
+            Date de naissance is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>CIN:</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Exemple: 121547"
+            [(ngModel)]="Etudiant.cin"
+            name="cin"
+            #cinEtudiant="ngModel"
+            required
+          />
+          <mat-error *ngIf="cinEtudiant.invalid && cinEtudiant.touched">
+            Cin is required
           </mat-error>
         </mat-form-field>
         
-      
+        <!-- Other form fields -->
 
-        <mat-form-field appearance="outline" class="w-100">
-          <label>Prénom</label>
-          <input matInput type="text" placeholder="Prénom"  name="prenomEt" [(ngModel)]="Etudiant.prenomEt" #prenomEttudiant="ngModel" required minlength="6">
-          <mat-error *ngIf="form.controls['prenomEt'].invalid && form.controls['prenomEt'].touched" class="red-text">
-            <span *ngIf="form.controls['prenomEt'].hasError('required')">Required</span>
-            <span *ngIf="form.controls['prenomEt'].hasError('minlength')">Minimum length is 6 characters</span>
-          </mat-error>
-        </mat-form-field>
-
-          <mat-form-field appearance="outline" class="w-80">
-            <label id="email">Email:</label>
-            <input matInput type="email" placeholder="Adresse Email" name="email" [(ngModel)]="Etudiant.email" #emailEtudiant="ngModel" required>
-            <mat-error *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="red-text">
-              <span *ngIf="form.controls['email'].hasError('required')">Email Adress Required</span>
-              <span *ngIf="form.controls['email'].errors?.['email']">Invalid email format.</span>
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="w-100">
-            <label id="ecole">Ecole:</label>
-            <input type="text" placeholder="Ecole" [(ngModel)]="Etudiant.ecole"name="ecole" #ecoleEtudiant="ngModel" >
-        </mat-form-field>
-
-          <mat-form-field appearance="outline" class="w-80">
-            <label id="mdp">Mot De passe:</label>
-           <input  matInput type="password" placeholder="Mot de passe" [(ngModel)]="Etudiant.mdp" required name="mdp" #mdpEtudiant="ngModel">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="w-80">
-            <label id="date_naissance">Date de naissance:</label>
-            <input matInput type="text" placeholder="YYYY-MM-DD" name="date_naissance" [(ngModel)]="Etudiant.date_naissance" #date_naissanceEtudiant="ngModel">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="w-80">
-            <label id="cin">CIN:</label>
-            <input matInput type="text" placeholder="CIN" [(ngModel)]="Etudiant.cin" name="cin" #cinEtudiant="ngModel" required> 
-            <mat-error *ngIf="form.controls['cin'].hasError('required')">Cin Required</mat-error>
-          </mat-form-field>
-        <button mat-flat-button color="accent" class="w-100" type="submit"(click)="saveEtudiant(form.value)" (click)="show(form.value)">
-          Ajouter</button>
+        <button mat-flat-button color="accent" class="w-95"[disabled]="form.invalid" type="submit" (click)="saveEtudiant(form.value); show(form.value)">
+          Ajouter
+        </button>
 
       </div>
-</mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
 </form>

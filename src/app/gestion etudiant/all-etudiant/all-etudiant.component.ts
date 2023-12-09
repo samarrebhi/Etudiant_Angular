@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import { EtudiantService } from 'src/app/services/etudiant.service';
 import { Etudiant } from 'src/app/models/etudiant';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-all-etudiant',
   templateUrl: './all-etudiant.component.html',
@@ -9,58 +11,28 @@ import { Etudiant } from 'src/app/models/etudiant';
 })
 export class AllEtudiantComponent implements OnInit {
   Etudiants: Etudiant[] = [];
-  updatingEtudiantId: number | null = null;
   search = '';
   Etudiant: any;
-  constructor(private service: EtudiantService) {}
+
+  constructor(private service: EtudiantService, private router: Router) {}
+
   ngOnInit(): void {
     this.getall();
   }
-   getall(){this.service.getEtudiantList().subscribe((Etudiants) => {
-    console.log('La liste des étudiants:', Etudiants);
-    this.Etudiants = Etudiants;
-  });
- }
-    /*
-  supprimer() {
-    this.service.getEtudiantById(id).subscribe(
-      (result) => {
-        this.Etudiant = result;
-          this.service.removeEtudiant(id).subscribe(
-            () => {
-              alert('Etudiant bien supprimé');
-            },
-            (error) => {
-              console.error('Erreur de suppression:', error);
-              alert('Erreur de suppression');
-            }
-          );},
-      (error) => {
-        console.error('Etudiant non existant.', error);
-        alert('Etudiant non existant.');
-      }
-    );
-  }
-  update(Etudiant: Etudiant): void {
-    console.log('Selected Etudiant:', Etudiant);
-    this.updatingEtudiantId = Etudiant.idEtudiant;
+
+  getall(): void {
+    this.service.getEtudiantList().subscribe((Etudiants) => {
+      console.log('La liste des étudiants:', Etudiants);
+      this.Etudiants = Etudiants;
+    });
   }
 
-  onEtudiantUpdateSuccess(EtudiantId: number): void {
-    // Clear updating state for the specific Etudiant
-    if (this.updatingEtudiantId === EtudiantId) {
-      this.updatingEtudiantId = null;
-    }
-    this.getall(); // Refresh the list when an update is successful
-  }
+  generateQRCodeForEtudiants(): void {
+    const dataToEncode = JSON.stringify(this.Etudiants);
 
-  isUpdating(EtudiantId: number): boolean {
-    // Check if the specific Etudiant is updating
-    return this.updatingEtudiantId === EtudiantId;
-  }
+    // Save data to local storage so it can be retrieved in QRcodeEtudiantComponent
+    localStorage.setItem('qrCodeData', dataToEncode);
 
-  traitemenet(t: any): void {
-    // Clear updating state
-    this.updatingEtudiantId = null;
-  }*/
+    this.router.navigate(['etudiant/qrcode-etudiant']);
+  }
 }

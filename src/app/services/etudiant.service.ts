@@ -9,8 +9,8 @@ export class EtudiantService {
 
  
   
-  baseUrl = "http://localhost:8088/Etudiants/addEtudiant";
-  Url="http://localhost:8088/Etudiants/"
+  baseUrl = "http://localhost:8081/Etudiants/addEtudiant";
+  Url="http://localhost:8081/Etudiants/"
   constructor(private http:HttpClient) { }
 
 

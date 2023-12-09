@@ -18,26 +18,32 @@ export class DeleteEtudiantComponent {
   
     this.service.getEtudiantByCin(cin).subscribe(
       (result) => {
-        this.Etudiant = result;
+        if (result) {
+          this.Etudiant = result;
           // Store the id in the class property
-      this.etudiantId = this.Etudiant.idEtudiant;
-          this.service.removeEtudiant(this.etudiantId).subscribe(
-            () => {
-              alert('Etudiant bien supprimé');
-            },
-            (error) => {
-              console.error('Erreur de suppression:', error);
-              alert('Erreur de suppression');
-            }
-          );},
-      (error) => {
-        console.error('Etudiant non existant.', error);
-        alert('Etudiant non existant.');
-      }
+          this.etudiantId = this.Etudiant.idEtudiant;
+  
+          if (this.etudiantId) {
+            this.service.removeEtudiant(this.etudiantId).subscribe(
+              () => {
+                alert('Etudiant bien supprimé');
+              },
+              (error) => {
+                console.error('Erreur de suppression:', error);
+                alert('Erreur de suppression');
+              }
+            );
+          } 
+        } else {
+          alert('Etudiant non existant.');
+        }
+      },
+      
     );
+  };
   }
   
     
-   }
+   
      
       

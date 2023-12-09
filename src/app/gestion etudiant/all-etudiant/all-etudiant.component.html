@@ -1,24 +1,31 @@
-<p>all-etudiant works!</p>
+
 <mat-card class="cardWithShadow">
   <mat-card-content class="p-24">
     <div class="d-flex w-100"><router-outlet></router-outlet></div></mat-card-content>
     <mat-card-content class="p-24">
       <div class="d-flex w-100">
         <!-- les bouttons du crud -->
-        <button mat-flat-button color="accent" class="w-10" routerLink="/add-etudiant">Ajouter un Etudiant</button>
-        <button mat-flat-button color="primary" class="w-10" routerLink="/update-etudiant">Modifier un Etudiant</button>
-        <button mat-flat-button color="warn" class="w-10" routerLink="/delete-etudiant">Supprimer un Etudiant</button>
+        <button mat-flat-button color="accent" class="w-10" routerLink="/etudiant/add-etudiant">Ajouter un Etudiant</button>
+        <button mat-flat-button color="primary" class="w-10"routerLink="/etudiant/update-etudiant">Modifier un Etudiant</button>
+        <button mat-flat-button color="warn" class="w-10" routerLink="/etudiant/delete-etudiant">Supprimer un Etudiant</button>
       </div>
     </mat-card-content>
+    
       <mat-card-content class="p-24">
-        <div class="d-flex w-100">
-          <input type="text" placeholder="Search" [(ngModel)]="search">
-        </div>
-    </mat-card-content>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Search" [(ngModel)]="search">
+        </mat-form-field>
+
+      </mat-card-content>
+      
+
   </mat-card>
-  
+  <button mat-raised-button color="primary" class="w-10" (click)=" generateQRCodeForEtudiants()">Obtenir un QRcode</button>
+
   <mat-card class="cardWithShadow">
+
     <mat-card-content class="p-20">
+
       <div class="d-flex w-10">
         <!-- Etudiant Table -->
         <div class="table-container">
