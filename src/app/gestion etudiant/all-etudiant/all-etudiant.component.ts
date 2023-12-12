@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { EtudiantService } from 'src/app/services/etudiant.service';
 import { Etudiant } from 'src/app/models/etudiant';
 import { Router } from '@angular/router';
@@ -18,7 +18,9 @@ export class AllEtudiantComponent implements OnInit {
   ngOnInit(): void {
     this.getall();
   }
-
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)   
+   }
   getall(): void {
     this.service.getEtudiantList().subscribe((Etudiants) => {
       console.log('La liste des étudiants:', Etudiants);

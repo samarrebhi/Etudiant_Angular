@@ -1,14 +1,20 @@
 <mat-card class="cardWithShadow">
   <mat-card-content class="p-24">
-    <h2 fxLayout="column" fxLayoutAlign="center center">
+    <h2 fxLayout="column"  appColorChange fxLayoutAlign="center center">
       Ajouter un nouveau Étudiant
     </h2>
   </mat-card-content>
 </mat-card>
+<button mat-flat-button color="warn" class="w-95" (click)="chooseformtrue()">
+  Utiliser template-driven form
+</button>
+<button mat-flat-button color="primary" class="w-95" (click)="chooseformfalse()">
+  Utiliser reactive form
+</button>
 <button mat-flat-button color="accent" class="w-10"routerLink="/etudiant">
   Retour
 </button>
-<form #form="ngForm" class="m-t-30">
+<form #form="ngForm" *ngIf="chooseform==true" class="m-t-30">
   <mat-card class="cardWithShadow">
     <mat-card-content class="p-24">
       <div fxLayout="column" fxLayoutAlign="center center">
@@ -134,4 +140,72 @@
       </div>
     </mat-card-content>
   </mat-card>
+</form>
+<!--reactive form-->
+
+<form *ngIf="chooseform==false" [formGroup]="etudiantForm"  (ngSubmit)="saveEtudiant(etudiantForm.value)" class="m-t-30">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Nom:</mat-label>
+    <input matInput type="text" placeholder="Foulen" formControlName="nomEt" />
+    <mat-error *ngIf="etudiantForm.get('nomEt')?.hasError('required') && etudiantForm.get('nomEt')?.touched">Required (Minimum length is 5 characters)</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Prénom:</mat-label>
+    <input matInput type="text" placeholder="BenFoulen" formControlName="prenomEt" />
+    <mat-error *ngIf="etudiantForm.get('prenomEt')?.hasError('required') && etudiantForm.get('prenomEt')?.touched">Required (Minimum length is 6 characters)</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-80">
+    <mat-label>Email:</mat-label>
+    <input matInput type="text" placeholder="Exemple@gmail.com" formControlName="email" />
+    <mat-error *ngIf="etudiantForm.get('email')?.hasError('required') && etudiantForm.get('email')?.touched">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="etudiantForm.get('email')?.hasError('email') && etudiantForm.get('email')?.touched">
+      Invalid email format
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Ecole:</mat-label>
+    <input matInput type="text" placeholder="Ecole sup de Tunis" formControlName="ecole" />
+    <mat-error *ngIf="etudiantForm.get('ecole')?.hasError('required') && etudiantForm.get('ecole')?.touched">
+      Ecole is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-90">
+    <mat-label>Mot de passe:</mat-label>
+    <input matInput type="password" placeholder="Mot de passe" formControlName="mdp" />
+    <mat-hint align="end">{{ etudiantForm.get('mdp')?.value?.length || 0 }}/10</mat-hint>
+    <mat-error *ngIf="etudiantForm.get('mdp')?.hasError('required') && etudiantForm.get('mdp')?.touched">
+      Mot de passe is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Date de naissance:</mat-label>
+    <input matInput type="date" placeholder="YYYY-MM-DD" formControlName="dateNaissance" />
+    <mat-error *ngIf="etudiantForm.get('dateNaissance')?.hasError('required') && etudiantForm.get('dateNaissance')?.touched">
+      Date de naissance is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>CIN:</mat-label>
+    <input matInput type="text" placeholder="Exemple: 121547" formControlName="cin" />
+    <mat-error *ngIf="etudiantForm.get('cin')?.hasError('required') && etudiantForm.get('cin')?.touched">
+      Cin is required
+    </mat-error>
+  </mat-form-field>
+  <button mat-flat-button color="accent" class="w-95" [disabled]="etudiantForm.invalid" type="submit">
+    Ajouter
+  </button>
+</div>
+</mat-card-content>
+</mat-card>
 </form>

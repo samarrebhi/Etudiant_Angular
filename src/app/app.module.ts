@@ -24,7 +24,8 @@ import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 
 import { MatCardModule } from '@angular/material/card';
-import { DisableButtonDirective } from './disable-button.directive';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,6 @@ import { DisableButtonDirective } from './disable-button.directive';
     SidebarComponent,
     HeaderComponent,
     BrandingComponent,
-    DisableButtonDirective,
     AppNavItemComponent
   ],
   imports: [
@@ -45,6 +45,7 @@ import { DisableButtonDirective } from './disable-button.directive';
     ReactiveFormsModule,
     MaterialModule,
     MatCardModule,
+   
     TablerIconsModule.pick(TablerIcons),
   ],
   exports: [TablerIconsModule],

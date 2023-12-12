@@ -13,8 +13,9 @@
  
       <mat-card-content class="p-24">
         <mat-form-field>
-          <input matInput appFocusInput type="text" placeholder="Search" [(ngModel)]="search">
+          <input matInput type="text" placeholder="Search" [(ngModel)]="search">
         </mat-form-field>
+       
 
       </mat-card-content>
       
@@ -33,7 +34,7 @@
             <thead>
             <tr>
               <!-- Titles -->
-              <th class="table-header">Nom Etudiant</th>
+              <th  class="table-header">Nom Etudiant</th>
               <th class="table-header">Prenom Etudiant</th>
               <th class="table-header">Cin</th>
               <th class="table-header">Ecole</th>
@@ -49,13 +50,13 @@
               <ng-container *ngIf="Etudiant.nomEt === search || search === ''">
                 <!-- Etudiant Details -->
                
-                <td class="table-cell">{{ Etudiant.nomEt }}</td>
-                <td class="table-cell">{{ Etudiant.prenomEt }}</td>
-                <td class="table-cell">{{ Etudiant.cin }}</td>
-                <td class="table-cell">{{ Etudiant.ecole }}</td>
-                <td class="table-cell">{{ Etudiant.email }}</td>
-                <td class="table-cell">{{ Etudiant.dateNaissance}}</td>
-                <td class="table-cell">{{ Etudiant.mdp}}</td>
+                <td appColorChange class="table-cell">{{ Etudiant.nomEt }}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.prenomEt }}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.cin }}</td>
+                <td appColorChange class="table-cell">{{ Etudiant.ecole }}</td>
+                <td appColorChange class="table-cell">{{ Etudiant.email }}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.dateNaissance}}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.mdp}}</td>
   
                
                 

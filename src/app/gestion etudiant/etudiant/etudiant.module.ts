@@ -14,6 +14,7 @@ import { UpdateEtudiantComponent } from '../update-etudiant/update-etudiant.comp
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
+import { ColorChangeDirective } from 'src/app/color-change.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MaterialModule } from '../../material.module';
     AddEtudiantComponent,
     DeleteEtudiantComponent,
     UpdateEtudiantComponent,
+    ColorChangeDirective
   ],
   imports: [
     CommonModule,
