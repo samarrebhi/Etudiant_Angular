@@ -48,9 +48,9 @@
           <mat-label>Email:</mat-label>
           <input
             matInput
-            type="email"
+            type="text"
             placeholder="Exemple@gmail.com"
-            name="emailEtudiant"
+            name="email"
             [(ngModel)]="Etudiant.email"
             #emailEtudiant="ngModel"
             email
@@ -85,9 +85,9 @@
             placeholder="Mot de passe"
             [(ngModel)]="Etudiant.mdp"
             maxlength="10"
-            name="mdpEtudiant"
+            name="mdp"
             #mdpEtudiant="ngModel"
-            required
+           required
           />
           <mat-hint align="end">{{ mdpEtudiant.value?.length || 0 }}/10</mat-hint>
           <mat-error *ngIf="mdpEtudiant.invalid && mdpEtudiant.touched">
@@ -100,12 +100,12 @@
             matInput
             type="date"
             placeholder="YYYY-MM-DD"
-            name="date_naissance"
-            [(ngModel)]="Etudiant.date_naissance"
-            #date_naissanceEtudiant="ngModel"
+            name="dateNaissance"
+            [(ngModel)]="Etudiant.dateNaissance"
+            #dateNaissanceEtudiant="ngModel"
             required
           />
-          <mat-error *ngIf="date_naissanceEtudiant.invalid && date_naissanceEtudiant.touched">
+          <mat-error *ngIf="dateNaissanceEtudiant.invalid && dateNaissanceEtudiant.touched">
             Date de naissance is required
           </mat-error>
         </mat-form-field>

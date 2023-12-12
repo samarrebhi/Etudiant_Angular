@@ -6,7 +6,7 @@ export class Etudiant {
     mdp!:string;
     cin!:Int16Array;
     ecole!:string;
-    date_naissance!:string;
+    dateNaissance!:Date;
 
   
 

@@ -24,9 +24,7 @@ import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 
 import { MatCardModule } from '@angular/material/card';
-
-
-
+import { DisableButtonDirective } from './disable-button.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +33,8 @@ import { MatCardModule } from '@angular/material/card';
     SidebarComponent,
     HeaderComponent,
     BrandingComponent,
+    DisableButtonDirective,
     AppNavItemComponent
-    
   ],
   imports: [
     BrowserModule,
