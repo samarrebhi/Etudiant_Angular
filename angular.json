@@ -85,9 +85,11 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "src/styles.scss",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ]
+          
           }
         }
       }
@@ -96,4 +98,5 @@
   "cli": {
     "analytics": false
   }
+  
 }
