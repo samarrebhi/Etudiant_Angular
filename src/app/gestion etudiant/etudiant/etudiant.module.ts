@@ -14,8 +14,8 @@ import { UpdateEtudiantComponent } from '../update-etudiant/update-etudiant.comp
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
-import { ColorChangeDirective } from 'src/app/color-change.directive';
-
+import { ColorChangeDirective } from 'src/app/gestion etudiant/directive-etudiant/color-change.directive';
+import { UpdateEtudiantInputComponent } from '../update-etudiant-input/update-etudiant-input.component';
 @NgModule({
   declarations: [
     QRcodeEtudiantComponent,
@@ -23,7 +23,7 @@ import { ColorChangeDirective } from 'src/app/color-change.directive';
     AddEtudiantComponent,
     DeleteEtudiantComponent,
     UpdateEtudiantComponent,
-    ColorChangeDirective
+    ColorChangeDirective,UpdateEtudiantInputComponent
   ],
   imports: [
     CommonModule,

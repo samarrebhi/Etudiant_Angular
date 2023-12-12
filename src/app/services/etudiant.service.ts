@@ -13,7 +13,9 @@ export class EtudiantService {
   Url="http://localhost:8081/Etudiants/"
   constructor(private http:HttpClient) { }
 
-
+  getEtudiantById(id: any): Observable<Etudiant> {
+    return this.http.get<Etudiant>(`${this.baseUrl}/getby/${id}`);
+  }
   addEtudiant(data:Etudiant):Observable<Etudiant>{
     return this.http.post<Etudiant>(this.baseUrl,data);
   }
