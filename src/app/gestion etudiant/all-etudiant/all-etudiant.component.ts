@@ -17,7 +17,6 @@ export class AllEtudiantComponent implements OnInit {
   pageSize: number;
 
   constructor(private service: EtudiantService, private router: Router) {}
-
   ngOnInit(): void {
     this.getall();
     this.updateDisplayedEtudiant();
@@ -25,14 +24,12 @@ export class AllEtudiantComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes)   
    }
-  
   getall(): void {
     this.service.getEtudiantList().subscribe((Etudiants) => {
       console.log('La liste des étudiants:', Etudiants);
       this.Etudiants = Etudiants;
     });
   }
-
   generateQRCodeForEtudiants(): void {
     const dataToEncode = JSON.stringify(this.Etudiants);
 
@@ -50,7 +47,6 @@ export class AllEtudiantComponent implements OnInit {
     this.etudianttoSelected = etudiant;
     this.show = true;
   }
-
   private updateDisplayedEtudiant(): void {
     const startIndex = this.pageIndex * this.pageSize;
     this.updateDisplayedEtudiant = this.Etudiant.slice(startIndex, startIndex + this.pageSize);
@@ -60,10 +56,8 @@ export class AllEtudiantComponent implements OnInit {
     for (let i = 0; i < this.Etudiant.length; i++) {
       if (this.Etudiant[i].idEtudiant == e.id) {
         this.Etudiant[i] = e;
-      }
-    }
-  }
-
+      }}}
+   
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
     this.updateDisplayedEtudiant();

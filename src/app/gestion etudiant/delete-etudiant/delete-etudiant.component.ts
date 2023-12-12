@@ -26,22 +26,11 @@ export class DeleteEtudiantComponent {
           if (this.etudiantId) {
             this.service.removeEtudiant(this.etudiantId).subscribe(
               () => {
-                alert('Etudiant bien supprimé');
-              },
+                alert('Etudiant bien supprimé');},
               (error) => {
                 console.error('Erreur de suppression:', error);
-                alert('Erreur de suppression');
-              }
-            );
-          } 
-        } else {
-          alert('Etudiant non existant.');
-        }
-      },
-      
-    );
-  };
-  }
+                alert('Erreur de suppression');});} } else {
+          alert('Etudiant non existant.');}},);};}
   
     
    

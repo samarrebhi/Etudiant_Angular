@@ -28,35 +28,22 @@ export class AddEtudiantComponent {
       dateNaissance: ['', Validators.required],
       cin: ['', Validators.required],
       // Add other form controls as needed
-    });
-  }
-  showForm(f:any){
-    console.log(f);}
-  
-
+    });}
 // tester les inputs 
 show(u:Etudiant){
-  console.log('Form value:', u);
-
-}
+  console.log('Form value:', u);}
 // ajouter l'étudiant par le template driven
 saveEtudiant(u:Etudiant){
 this.EtudiantService.addEtudiant(u).subscribe(
   (response) => {
-   
     console.log('Response from server:', response);
     alert('etudiant ajouté');
   },
   (error) => {
     console.error('Error adding Etudiant:', error);}
-);
-;
-}
-
+);;}
 //reactive form 
-
 etudiantForm: FormGroup;
-
 //ajout de l'étudiant par le reactive forùm
 saveEtudiant2(formData:Etudiant) {
   this.EtudiantService.addEtudiant(formData).subscribe(
@@ -67,9 +54,5 @@ saveEtudiant2(formData:Etudiant) {
     },
     (error) => {
       console.error('Error adding Etudiant:', error);}
-  );
-  ;
- 
-  console.log(formData);
-}
-}
+  );;console.log(formData);}}
+
