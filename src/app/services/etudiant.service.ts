@@ -9,8 +9,8 @@ export class EtudiantService {
 
  
   
-  baseUrl = "http://localhost:8081/Etudiants/addEtudiant";
-  Url="http://localhost:8081/Etudiants/"
+  baseUrl = "http://localhost:8181/Etudiants/addEtudiant";
+  Url="http://localhost:8181/Etudiants/"
   constructor(private http:HttpClient) { }
 
   getEtudiantById(id: any): Observable<Etudiant> {
