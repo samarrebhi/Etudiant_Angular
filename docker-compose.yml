@@ -6,4 +6,4 @@ services:
       context: .
     restart: always
     ports:
-      - "8888:4200"  # Mapping host port 8888 to container port 4200
+      - "8889:4200"  # Mapping host port 8888 to container port 4200
